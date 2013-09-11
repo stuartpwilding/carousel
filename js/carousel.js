@@ -45,9 +45,9 @@ $(document).ready(function() {
       }
 
       // clone last page and insert at beginning, clone first page and insert at end
-      $items.filter(':first').before($items.slice(-visible).clone()
+      $items.first().before($items.slice(-visible).clone()
       .addClass('clone'));
-      $items.filter(':last').after($items.slice(0, visible).clone()
+      $items.last().after($items.slice(0, visible).clone()
       .addClass('clone'));
       $items = $slider.find('div.item'); // update
 
