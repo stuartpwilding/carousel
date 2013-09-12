@@ -8,6 +8,10 @@ $(document).ready(function() {
     autoplay : true
   });
   
+  $('div.carousel-example-3').carousel({
+    responsive : true
+  });
+  
 
 });
 
@@ -17,6 +21,7 @@ $(document).ready(function() {
       indicate : true,      
       touch    : true,
       autoplay : false,
+      responsive : false,
       speed    : 500,
       delay    : 7000
     };
@@ -26,6 +31,21 @@ $(document).ready(function() {
       var $wrapper = $this.find('div.wrapper');
       var $slider = $wrapper.find('div.slider');
       var $items = $slider.find('div.item');
+      
+      if (options.responsive) {
+        $items.css('width', $wrapper.outerWidth());
+       
+      }
+
+      $(window).bind('resize', function(e) {
+        window.resizeEvt;
+        $(window).resize(function() {
+          clearTimeout(window.resizeEvt);
+          window.resizeEvt = setTimeout(function() {
+            console.log('b')
+          }, 250);
+        });
+      });
       var item_width = $items.eq(0).outerWidth();
       var visible = Math.ceil($wrapper.innerWidth() / item_width);
       var current_page = 1;
@@ -131,6 +151,7 @@ $(document).ready(function() {
           gotoPage(current_page + 1); 
         });
       }
+      
     });
   };
 })(jQuery);

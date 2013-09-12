@@ -6,14 +6,18 @@
 .carousel .indicators .active { cursor: default; }
 .carousel .item { min-height: 10px; }
 
-.carousel-example { width: 400px; padding: 0 100px; position: relative; }
-.carousel-example .item { width: 400px; }
+.carousel-example { position: relative; }
 .carousel-example .button { width: 50px; height: 50px; background: red; position: absolute; top: 100px; left: 0; }
 .carousel-example .next { background: blue; left: auto; right: 0; }
 .carousel-example .indicators .active { color: red; }
 
-.carousel-example-1 .item { float: left; }
+.carousel-example-1 { width: 400px; padding: 0 100px; }
+.carousel-example-1 .item { float: left; width: 400px; }
 
-.carousel-example-2 { width: 800px; }
+.carousel-example-2 { width: 800px; padding: 0 100px; }
 .carousel-example-2 .item { display: table-cell; }
 .carousel-example-2 .item.empty { background: yellow; }
+
+.carousel-example-3 { max-width: 960px; padding: 0; }
+.carousel-example-3 .item { float: left; }
+.carousel-example-3 .item img { max-width: 100%; }
