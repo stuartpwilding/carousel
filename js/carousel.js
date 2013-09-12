@@ -16,7 +16,7 @@ $(document).ready(function() {
 });
 
 (function ($) {
-  $.fn.carousel = function (options) {
+  $.fn.carousel = function(options) {
     defaults = {
       indicate : true,      
       touch    : true,
@@ -35,17 +35,19 @@ $(document).ready(function() {
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
        
+        var resizeDelay;
+        $(window).resize(function(){
+          clearTimeout(resizeDelay);
+          resizeDelay = setTimeout(yo, 100);
+        });
+        
       }
 
-      $(window).bind('resize', function(e) {
-        window.resizeEvt;
-        $(window).resize(function() {
-          clearTimeout(window.resizeEvt);
-          window.resizeEvt = setTimeout(function() {
-            console.log('b')
-          }, 250);
-        });
-      });
+      function yo(){
+          console.log('b')
+      }
+
+
       var item_width = $items.eq(0).outerWidth();
       var visible = Math.ceil($wrapper.innerWidth() / item_width);
       var current_page = 1;
