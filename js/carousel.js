@@ -1,19 +1,4 @@
-$(document).ready(function() { 
-
-  $('div.carousel-example-1').carousel({
-    autoplay : true
-  });
-  
-  $('div.carousel-example-2').carousel({
-    autoplay : true
-  });
-  
-  $('div.carousel-example-3').carousel({
-    responsive : true
-  });
-  
-
-});
+/* https://github.com/stuartpwilding/carousel v2.0 */
 
 (function ($) {
   $.fn.carousel = function(options) {
