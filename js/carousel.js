@@ -20,8 +20,9 @@
 
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
+        if ($items.length <= 1) { return false; }
         var resizeDelay;
-        $(window).resize(function(){
+        $(window).resize(function() {
           clearTimeout(resizeDelay);
           resizeDelay = setTimeout(function() {
             $items.css('width', $wrapper.outerWidth());
@@ -38,9 +39,7 @@
       var item_width = $items.eq(0).outerWidth();
       var visible = Math.ceil($wrapper.innerWidth() / item_width);
       var pages = Math.ceil($items.length / visible);
-      if ($items.length <= visible) {
-        return false;
-      }
+      if ($items.length <= visible) { return false; }
 
       // add empty items to last page if needed
       if ($items.length % visible) {
