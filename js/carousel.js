@@ -18,12 +18,12 @@ $(document).ready(function() {
 (function ($) {
   $.fn.carousel = function(options) {
     defaults = {
-      indicate : true,      
-      touch    : true,
-      autoplay : false,
+      indicate   : true,      
+      touch      : true,
+      autoplay   : false,
       responsive : false,
-      speed    : 500,
-      delay    : 7000
+      speed      : 500,
+      delay      : 7000
     };
     var options = $.extend(defaults, options);
     return this.each(function () {
@@ -31,28 +31,28 @@ $(document).ready(function() {
       var $wrapper = $this.find('div.wrapper');
       var $slider = $wrapper.find('div.slider');
       var $items = $slider.find('div.item');
-      
+      var current_page = 1;
+
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
-       
         var resizeDelay;
         $(window).resize(function(){
           clearTimeout(resizeDelay);
-          resizeDelay = setTimeout(yo, 100);
+          resizeDelay = setTimeout(function() {
+            $items.css('width', $wrapper.outerWidth());
+            item_width = $items.eq(0).outerWidth();
+            $wrapper.scrollLeft(item_width * visible);
+            current_page = 1;     
+            if (options.indicate) {
+              updateIndicators(current_page);
+            }
+          }, 100);
         });
-        
       }
-
-      function yo(){
-          console.log('b')
-      }
-
-
+      
       var item_width = $items.eq(0).outerWidth();
       var visible = Math.ceil($wrapper.innerWidth() / item_width);
-      var current_page = 1;
       var pages = Math.ceil($items.length / visible);
-      
       if ($items.length <= visible) {
         return false;
       }
@@ -76,7 +76,7 @@ $(document).ready(function() {
       // reposition to original first page
       $wrapper.scrollLeft(item_width * visible);
 
-      function gotoPage(page) {
+      var gotoPage = function(page) {
         var dir = page < current_page ? -1 : 1;
         var pages_move = Math.abs(current_page - page);
         var distance = item_width * dir * visible * pages_move;
@@ -120,7 +120,7 @@ $(document).ready(function() {
         $indicators.appendTo($this);
       }
 
-      function updateIndicators(ref) {
+      var updateIndicators = function(ref) {
         $indicators.find('span.active').removeClass('active');
         $indicators.find('span').eq(ref - 1).addClass('active');
       }
