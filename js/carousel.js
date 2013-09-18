@@ -10,7 +10,7 @@
       delay      : 7000
     };
     var options = $.extend(defaults, options);
-    return this.each(function () {
+    return this.each(function() {
       var $this = $(this);
       var $wrapper = $this.find('div.wrapper');
       var $slider = $wrapper.find('div.slider');
@@ -61,7 +61,7 @@
         var distance = item_width * dir * visible * pages_move;
         $wrapper.filter(':not(:animated)').animate({
           scrollLeft:'+=' + distance
-        }, options.speed, function () {
+        }, options.speed, function() {
           // if at the end or beginning (one of the cloned pages), repositioned to the original page it was cloned from for infinite effect
           if (page == 0) {
             $wrapper.scrollLeft(item_width * visible * pages);
@@ -72,16 +72,17 @@
           }
           current_page = page;
           if (options.indicate) {
-            updateIndicators(page);
+            $indicators.find('span.active').removeClass('active');
+            $indicators.find('span').eq(page - 1).addClass('active');
           }
         });
       }
 
       var $controls = $('<div class="controls" />');
-      var btn_prev = $('<span class="button prev" />').on('click',function () {
+      var btn_prev = $('<span class="button prev" />').on('click', function() {
         gotoPage(current_page - 1);
       }).appendTo($controls);
-      var btn_next = $('<span class="button next" />').on('click',function () {
+      var btn_next = $('<span class="button next" />').on('click', function() {
         gotoPage(current_page + 1);
       }).appendTo($controls);
       $controls.appendTo($this);
@@ -89,7 +90,7 @@
       if (options.indicate) {
         var $indicators = $('<div class="indicators" />');
         for (i = 1; i <= pages; i++) {
-          $('<span>' + i + '</span>').on('click', function () {
+          $('<span>' + i + '</span>').on('click', function() {
             gotoPage($(this).data('ref'));
           })
           .data('ref', i)
@@ -97,11 +98,6 @@
         }
         $indicators.find('span').eq(0).addClass('active');
         $indicators.appendTo($this);
-      }
-
-      var updateIndicators = function(ref) {
-        $indicators.find('span.active').removeClass('active');
-        $indicators.find('span').eq(ref - 1).addClass('active');
       }
 
       if (options.autoplay) {
