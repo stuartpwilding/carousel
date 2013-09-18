@@ -109,7 +109,7 @@
       }
 
       if (options.autoplay) {
-        $(window).load(function () {
+        $(window).load(function() {
           var play = true;
           $this.hover(
             function () {
@@ -119,7 +119,7 @@
               play = true;
             }
           );
-          setInterval(function () {
+          setInterval(function() {
             if (play) {
               btn_next.trigger('click');
             }
