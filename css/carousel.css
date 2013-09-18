@@ -1,6 +1,5 @@
-.carousel .wrapper { overflow: auto; }
-.js .carousel .wrapper { overflow: hidden; }
-.js .carousel .slider { width: 9999em; overflow: hidden; }
+.carousel .wrapper { overflow: hidden; }
+.carousel .slider { width: 9999em; overflow: hidden; }
 .carousel .button { display: block; cursor: pointer; }
 .carousel .indicators span { cursor: pointer; }
 .carousel .indicators .active { cursor: default; }
@@ -11,13 +10,13 @@
 .carousel-example .next { background: blue; left: auto; right: 0; }
 .carousel-example .indicators .active { color: red; }
 
-.carousel-example-1 { width: 400px; padding: 0 100px; }
+.carousel-example-1 { width: 400px; padding: 0 60px; }
 .carousel-example-1 .item { float: left; width: 400px; }
 
-.carousel-example-2 { width: 800px; padding: 0 100px; }
+.carousel-example-2 { width: 800px; padding: 0 60px; }
 .carousel-example-2 .item { width: 400px; display: table-cell; }
 .carousel-example-2 .item.empty { background: yellow; }
 
-.carousel-example-3 { max-width: 960px; padding: 0; }
+.carousel-example-3 { max-width: 960px; }
 .carousel-example-3 .item { float: left; }
 .carousel-example-3 .item img { max-width: 100%; }

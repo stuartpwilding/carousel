@@ -117,7 +117,7 @@
           );
           setInterval(function() {
             if (play) {
-              btn_next.trigger('click');
+              gotoPage(current_page + 1);
             }
           }, options.delay);
         });
