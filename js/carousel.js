@@ -24,13 +24,9 @@
         $(window).resize(function() {
           clearTimeout(resizeDelay);
           resizeDelay = setTimeout(function() {
-            $items.css('width', $wrapper.outerWidth());
-            item_width = $items.eq(0).outerWidth();
-            $wrapper.scrollLeft(item_width * visible);
-            current_page = 1;     
-            if (options.indicate) {
-              updateIndicators(current_page);
-            }
+            item_width = $wrapper.outerWidth();
+            $items.css('width', item_width);
+            $wrapper.scrollLeft(item_width * current_page);
           }, 100);
         });
       }
