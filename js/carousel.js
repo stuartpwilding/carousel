@@ -3,8 +3,7 @@
 (function ($) {
   $.fn.carousel = function(options) {
     defaults = {
-      indicate   : true,      
-      touch      : true,
+      indicate   : true,
       autoplay   : false,
       responsive : false,
       speed      : 500,
@@ -128,8 +127,8 @@
         });
       }
       
-      //swipe support - requires jQuery mobile    
-      if (options.touch && jQuery.isFunction(jQuery.fn.swiperight)) {
+      //swipe functionality - requires jQuery mobile    
+      if ($.isFunction($.fn.swiperight)) {
         $slider.swiperight(function() {  
           gotoPage(current_page - 1);
         });
