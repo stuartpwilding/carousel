@@ -112,10 +112,10 @@
         $(window).load(function() {
           var play = true;
           $this.hover(
-            function () {
+            function() {
               play = false;
             },
-            function () {
+            function() {
               play = true;
             }
           );
