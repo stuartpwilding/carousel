@@ -1,6 +1,6 @@
-/* https://github.com/stuartpwilding/carousel v2.0 */
+/* https://github.com/stuartpwilding/carousel v2.1 */
 
-(function ($) {
+(function($) {
   $.fn.carousel = function(options) {
     defaults = {
       indicate   : true,
@@ -18,6 +18,9 @@
       var current_page = 1;
 
       if (options.responsive) {
+        $items.css('width', $wrapper.outerWidth());
+        // this may cause a vertical scrollbar to disapper and change the viewport width
+        // so do it again
         $items.css('width', $wrapper.outerWidth());
         if ($items.length <= 1) { return false; }
         var resizeDelay;
