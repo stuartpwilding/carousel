@@ -1,8 +1,9 @@
-/* https://github.com/stuartpwilding/carousel v2.1 */
+/* https://github.com/stuartpwilding/carousel v2.2 */
 
 (function($) {
   $.fn.carousel = function(options) {
     defaults = {
+      controls   : true,
       indicate   : true,
       autoplay   : false,
       responsive : false,
@@ -19,7 +20,7 @@
 
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
-        // this may cause a vertical scrollbar to disapper and change the viewport width
+        // this may cause vertical scrollbar to disapper and change the viewport width
         // so do it again
         $items.css('width', $wrapper.outerWidth());
         if ($items.length <= 1) { return false; }
@@ -81,15 +82,17 @@
         });
       }
 
-      var $controls = $('<div class="controls" />');
-      var btn_prev = $('<span class="button prev" />').on('click', function() {
-        gotoPage(current_page - 1);
-      }).appendTo($controls);
-      var btn_next = $('<span class="button next" />').on('click', function() {
-        gotoPage(current_page + 1);
-      }).appendTo($controls);
-      $controls.appendTo($this);
-      
+      if (options.controls) {
+        var $controls = $('<div class="controls" />');
+        var btn_prev = $('<span class="button prev" />').on('click', function() {
+          gotoPage(current_page - 1);
+        }).appendTo($controls);
+        var btn_next = $('<span class="button next" />').on('click', function() {
+          gotoPage(current_page + 1);
+        }).appendTo($controls);
+        $controls.appendTo($this);
+      )
+
       if (options.indicate) {
         var $indicators = $('<div class="indicators" />');
         for (i = 1; i <= pages; i++) {
