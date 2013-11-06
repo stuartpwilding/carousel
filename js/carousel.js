@@ -18,6 +18,8 @@
       var $items = $slider.find('div.item');
       var current_page = 1;
 
+      $this.addClass('enabled');
+
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
         // this may cause vertical scrollbar to disapper and change the viewport width
