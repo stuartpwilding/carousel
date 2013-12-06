@@ -18,7 +18,7 @@
       var $items = $slider.find('div.item');
       var current_page = 1;
 
-      $this.addClass('enabled');
+      $this.addClass('is-enabled');
 
       if (options.responsive) {
         $items.css('width', $wrapper.outerWidth());
@@ -93,7 +93,7 @@
           gotoPage(current_page + 1);
         }).appendTo($controls);
         $controls.appendTo($this);
-      )
+      }
 
       if (options.indicate) {
         var $indicators = $('<div class="indicators" />');
